@@ -10,7 +10,10 @@
     "test:core": "vitest run",
     "test:legacy": "node tests/smoke.cjs && node --test tests/persistence.test.cjs tests/auth.test.cjs",
     "test:e2e": "playwright test",
-    "check:foundation": "npm run typecheck && npm test"
+    "check:foundation": "npm run typecheck && npm test",
+    "build:web": "npm --prefix apps/web run build",
+    "test:web": "npm --prefix apps/web test",
+    "typecheck:web": "npm --prefix apps/web run typecheck"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.118.0",

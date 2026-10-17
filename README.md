@@ -54,3 +54,10 @@ npm run build
 ข้อกำหนดล่าสุดอยู่ใน [AGENTS.md](AGENTS.md) และ [ผลตรวจเทียบ Stack/กฎ](docs/STACK_COMPLIANCE_AUDIT.md) branch foundation เพิ่มเฉพาะส่วนกลางที่ไม่เดา schema; ยังไม่ใช่ Next.js migration ที่เสร็จครบ ระบบ static เดิมยังอยู่จน canonical design และ dev target ชัดเจน
 
 ตรวจส่วนใหม่ด้วย `npm run typecheck`, `npm run test:core`, `npm run test:e2e` และตรวจระบบเดิมด้วย `npm run test:legacy` E2E ทำงานกับ local read-only test server และ block Supabase requests ไม่ส่งอีเมลหรือแตะ project ปัจจุบัน
+# Next.js migration preview
+
+แอปใหม่อยู่ใน `apps/web` พร้อมหน้าภาพรวมและตารางข้อมูลสาธิตของ 9 ระบบ
+ใช้ `npm ci --prefix apps/web` แล้ว `npm run build:web` เพื่อสร้าง
+อ่าน [สถานะการย้ายและข้อจำกัด](docs/NEXT_MIGRATION_STATUS.md) ก่อนเผยแพร่
+ยังไม่ใช่การย้ายระบบ/ฐานข้อมูลครบ และไม่แทนที่ production เดิม
+

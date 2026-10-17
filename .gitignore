@@ -10,3 +10,8 @@ dist/assets/config.js
 coverage/
 playwright-report/
 test-results/
+
+# Next.js migration app
+.next/
+out/
+*.tsbuildinfo

@@ -98,3 +98,12 @@
 - esbuild/Supabase CLI เป็น dependency เดิมก่อนกฎใหม่ ยังไม่ได้เพิ่มหรือใช้เป็นสถาปัตยกรรมใหม่ ต้องประเมินถอดเมื่อย้าย Next build สมบูรณ์
 - เอกสารเดิมชื่อ docs/DECISIONS.md ใช้บันทึกเดิมต่อโดยไม่สร้าง docs/decisions.md ซ้ำให้ชนกันบน Windows; การย้ายชื่อ canonical ต้องคงประวัติและลิงก์อ้างอิง
 - New core มี workflow, action transaction contract, Thai dates/fiscal year และ encrypted identifier utilities เท่านั้น ยังไม่ถูก wire เข้ากับ legacy UI/DB และไม่ใช่การประกาศว่าระบบผ่านกฎทั้งหมด
+
+## D-NEXT-20261017 — Next.js migration preview แยกจาก production เดิม
+
+- เพิ่ม apps/web ตาม Stack ที่ผู้ใช้ระบุ พร้อม exact lockfile: Next/React/TypeScript/Tailwind, Zod/React Hook Form, TanStack Table v8, ExcelJS และ Recharts
+- ใช้ shadcn/ui primitives แบบดัดแปลง native HTML เพื่อลด dependency ที่อยู่นอก Stack; ไม่อ้างว่าได้ย้ายครบชุด component หรือทุกหน้าจอเดิม
+- แสดง TEST_ DTO จาก fixture เดิมแบบอ่านอย่างเดียว ไม่อ่าน live data ไม่สร้าง canonical tables ทดแทน และไม่เรียก connector ก่อนยืนยัน dev
+- Vercel config บน branch นี้เป็น preview ของ Next app; ไม่ merge แทน production เดิมจน feature parity/schema/dev tests ครบ
+- Static export ใช้เฉพาะ preview ช่วงนี้; Server Actions/Auth/DB integration ต้องเป็น server deployment และทำตามกฎ Zod/สิทธิ์/audit/workflow
+- ยังไม่เพิ่ม PDF/Leaflet/Storage แบบ placeholder เพื่ออ้างว่าใช้ Stack ครบ ดูข้อค้างและผลทดสอบใน docs/NEXT_MIGRATION_STATUS.md
