@@ -7,3 +7,11 @@ supabase/.temp/
 supabase/.branches/
 dist/assets/supabase-client.js
 dist/assets/config.js
+coverage/
+playwright-report/
+test-results/
+
+# Next.js migration app
+.next/
+out/
+*.tsbuildinfo

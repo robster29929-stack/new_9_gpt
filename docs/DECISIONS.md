@@ -89,3 +89,21 @@
 - การคุ้มครอง: เอกสารจำกัดสิทธิ์ mask เรื่อง/เนื้อหา/ไฟล์ใน list/detail/search/CSV/XLSX; Excel ใช้ metadata allowlist; แบบร่างรับเฉพาะ `TEST_` และชื่อไฟล์ตัวอย่างโดยไม่มี upload
 - หลักฐาน UX: `docs/SYSTEM_08_SOURCE_PROFILE.md`; e-Office/คู่มือผู้ใช้กล่าวถึงร่างและแนบเอกสาร ส่งตรวจ เสนอลงนาม รับ-ส่ง/สถานะ และรายงานรับ-ส่ง/Excel
 - ข้อจำกัด: ไม่มี server/backend, authentication, RLS, Storage, e-mail/LINE/dConnect, delivery receipt, เลขทะเบียนจริง, ลายเซ็น, approval หรือเอกสารจริง; ทุก policy ตาม OQ-08-01…09 ยัง `TO VERIFY`
+
+## D-STACK-20261017 — ข้อกำหนด Stack จากผู้ใช้และงานเตรียมที่ไม่แตะ schema
+
+- Stack เป้าหมายและกฎ 11 ข้อใน AGENTS.md มีผลกับงานพัฒนาต่อจากนี้ ดูผลตรวจ docs/STACK_COMPLIANCE_AUDIT.md
+- ยังไม่มี docs/design.md ที่กำหนดตารางกลาง จึงไม่สร้าง Person/Temple/Place/Area/settings/audit_logs ใหม่ ไม่เดาลายเซ็น can_access และไม่เรียก Supabase connector จนยืนยัน dev target
+- เพิ่มเฉพาะ Zod 4.6.7, TypeScript 7.0.2, Vitest 5.0.5, Playwright 1.64.1 ซึ่งผู้ใช้ระบุใน Stack; @types/node 26.6.5 เป็น type definitions สำหรับ TypeScript ไม่ใช่ runtime library เพิ่มเติม
+- esbuild/Supabase CLI เป็น dependency เดิมก่อนกฎใหม่ ยังไม่ได้เพิ่มหรือใช้เป็นสถาปัตยกรรมใหม่ ต้องประเมินถอดเมื่อย้าย Next build สมบูรณ์
+- เอกสารเดิมชื่อ docs/DECISIONS.md ใช้บันทึกเดิมต่อโดยไม่สร้าง docs/decisions.md ซ้ำให้ชนกันบน Windows; การย้ายชื่อ canonical ต้องคงประวัติและลิงก์อ้างอิง
+- New core มี workflow, action transaction contract, Thai dates/fiscal year และ encrypted identifier utilities เท่านั้น ยังไม่ถูก wire เข้ากับ legacy UI/DB และไม่ใช่การประกาศว่าระบบผ่านกฎทั้งหมด
+
+## D-NEXT-20261017 — Next.js migration preview แยกจาก production เดิม
+
+- เพิ่ม apps/web ตาม Stack ที่ผู้ใช้ระบุ พร้อม exact lockfile: Next/React/TypeScript/Tailwind, Zod/React Hook Form, TanStack Table v8, ExcelJS และ Recharts
+- ใช้ shadcn/ui primitives แบบดัดแปลง native HTML เพื่อลด dependency ที่อยู่นอก Stack; ไม่อ้างว่าได้ย้ายครบชุด component หรือทุกหน้าจอเดิม
+- แสดง TEST_ DTO จาก fixture เดิมแบบอ่านอย่างเดียว ไม่อ่าน live data ไม่สร้าง canonical tables ทดแทน และไม่เรียก connector ก่อนยืนยัน dev
+- Vercel config บน branch นี้เป็น preview ของ Next app; ไม่ merge แทน production เดิมจน feature parity/schema/dev tests ครบ
+- Static export ใช้เฉพาะ preview ช่วงนี้; Server Actions/Auth/DB integration ต้องเป็น server deployment และทำตามกฎ Zod/สิทธิ์/audit/workflow
+- ยังไม่เพิ่ม PDF/Leaflet/Storage แบบ placeholder เพื่ออ้างว่าใช้ Stack ครบ ดูข้อค้างและผลทดสอบใน docs/NEXT_MIGRATION_STATUS.md

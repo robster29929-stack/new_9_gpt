@@ -1,0 +1,3 @@
+import Link from 'next/link';
+import {Card} from '@/components/ui/card';
+export default function Home(){return <main id="main-content" className="mx-auto max-w-3xl px-5 py-20"><Card><span className="text-sm font-semibold text-muted-foreground">พื้นที่ตรวจการย้ายระบบ</span><h1 className="my-4 text-4xl font-semibold">พื้นที่ทำงาน<br/>เชื่อมโยงทั้ง 9 ระบบ</h1><p className="mb-8 text-muted-foreground">ตรวจหน้าจอและข้อมูลสาธิต TEST_ ของระบบใหม่ ระบบนี้ยังไม่เปิดให้เขียนข้อมูลจริง</p><Link className="inline-flex rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground" href="/workspace">เปิดพื้นที่ทำงาน</Link></Card></main>;}
