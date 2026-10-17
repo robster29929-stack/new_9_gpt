@@ -1,0 +1,11 @@
+const fs = require('node:fs');
+const { buildSync } = require('esbuild');
+const defaults = JSON.parse(fs.readFileSync('config/supabase.public.json', 'utf8'));
+const url = process.env.SUPABASE_URL || defaults.supabaseUrl;
+const key = process.env.SUPABASE_PUBLISHABLE_KEY || defaults.supabasePublishableKey;
+if (!url || !key || !key.startsWith('sb_publishable_')) throw new Error('Configure SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY (publishable only)');
+const parsed = new URL(url);
+if (parsed.protocol !== 'https:' || !parsed.hostname.endsWith('.supabase.co')) throw new Error('Invalid Supabase project URL');
+fs.writeFileSync('dist/assets/config.js', `window.PORTAL_CONFIG = ${JSON.stringify({ supabaseUrl: url, supabasePublishableKey: key })};\n`);
+buildSync({ entryPoints: ['src/supabase-client.js'], bundle: true, minify: true, format: 'iife', target: 'es2022', outfile: 'dist/assets/supabase-client.js', legalComments: 'eof' });
+console.log('Built static portal and Supabase client. No private key is used.');

@@ -1,0 +1,13 @@
+{
+  "name": "new-9-gpt",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "test": "node tests/smoke.cjs && node --test tests/persistence.test.cjs tests/auth.test.cjs"
+  },
+  "dependencies": { "@supabase/supabase-js": "2.118.0" },
+  "devDependencies": { "esbuild": "0.28.2", "supabase": "2.121.0" },
+  "engines": { "node": ">=22" }
+}

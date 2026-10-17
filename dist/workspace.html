@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#153a31" />
+    <meta name="description" content="ต้นแบบ TEST_ พอร์ทัลรวมงานทะเบียน การศึกษา การสอบ งบประมาณ พัสดุ และสารบรรณ" />
+    <title>สังฆะพอร์ทัล — ระบบงานส่วนกลาง</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="/assets/controls.css" />
+  <link rel="stylesheet" href="/assets/readability.css" /></head>
+  <body data-cloud-required="true"><div id="workspace-gate" class="workspace-gate" role="status">กำลังตรวจบัญชีและโหลดพื้นที่ทำงาน…</div>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M20 4c4.4 5 6.6 9 6.6 12.2 0 2.6-2.9 4.5-6.6 4.5s-6.6-1.9-6.6-4.5C13.4 13 15.6 9 20 4Z" fill="currentColor"/><path d="M7.2 13.7c6.3 1.2 10.3 3.3 12.2 6.2 1.5 2.2.3 5.4-2.8 7.5-3.1 2.2-6.5 2.2-8 .1-1.9-2.9-2.3-7.5-1.4-13.8Z" fill="currentColor" opacity=".78"/><path d="M32.8 13.7c-6.3 1.2-10.3 3.3-12.2 6.2-1.5 2.2-.3 5.4 2.8 7.5 3.1 2.2 6.5 2.2 8 .1 1.9-2.9 2.3-7.5 1.4-13.8Z" fill="currentColor" opacity=".78"/><path d="M20 20v13M12 34h16" stroke="#153a31" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div><strong>สังฆะพอร์ทัล</strong><span>ระบบงานส่วนกลาง</span></div>
+        </div>
+        <div class="environment-pill"><span class="environment-dot"></span> TEST ENVIRONMENT</div>
+        <nav class="primary-nav" id="primary-nav" aria-label="เมนูระบบหลัก"></nav>
+        <div class="sidebar-bottom">
+          <div class="local-state"><span class="local-state-icon">●</span><span>ข้อมูล TEST_ แยกตามบัญชี<br /><b>บันทึกด้วย Supabase</b></span></div>
+          <button class="help-link" data-action="help"><span class="help-glyph">?</span> วิธีใช้และติดต่อ</button>
+          <div class="sidebar-version">ต้นแบบสำหรับตรวจสอบแนวคิด <span>Vercel · Supabase · TEST_</span></div>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="icon-button mobile-menu" data-action="toggle-menu" aria-label="เปิดเมนู">☰</button>
+            <button class="topbar-back" id="back-button" data-action="go-back" aria-label="ย้อนกลับ" hidden>← <span>ย้อนกลับ</span></button>
+            <div class="breadcrumb"><span>ระบบงาน</span><i>/</i><b id="breadcrumb-current">ภาพรวม</b></div>
+          </div>
+          <div class="topbar-right">
+            <label class="global-search"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="ค้นหาในหน้านี้" aria-label="ค้นหาในหน้านี้" /></label>
+            <button class="icon-button notification-button" data-action="notifications" aria-label="การแจ้งเตือนตัวอย่าง">♧<span class="notification-dot"></span></button>
+            <div class="user-chip" id="user-chip"><div class="avatar">T</div><div class="user-label"><b>TEST_ผู้ดูแลระบบสูงสุด</b><span>บัญชีจำลอง · TEST_</span></div><span class="user-caret">⌄</span></div>
+            <button class="btn btn-secondary logout-button" id="logout-button" data-action="logout">ปิดโหมดทดสอบ</button>
+            <a class="btn btn-secondary logout-button" href="/login.html">บัญชี</a>
+            <a class="btn btn-secondary logout-button" id="platform-logout" href="/login.html">ออกจากระบบ</a>
+          </div>
+        </header>
+        <div class="cloud-toolbar"><div><b id="signed-in-email"></b><span id="cloud-status" role="status" aria-live="polite">กำลังเชื่อมต่อ…</span></div><button class="btn btn-secondary" id="cloud-save">บันทึกข้อมูล</button><button class="btn btn-secondary" id="cloud-backup" hidden>ดาวน์โหลดข้อมูลที่ค้าง</button></div><section id="page-content" class="page-content" tabindex="-1"></section>
+      </main>
+    </div>
+    <button class="scroll-top-button" id="scroll-top" data-action="scroll-top" aria-label="กลับขึ้นด้านบน" title="กลับขึ้นด้านบน">↑ <span>กลับขึ้นด้านบน</span></button>
+    <div id="modal-root"></div>
+    <div id="toast-root" aria-live="polite" aria-atomic="true"></div>
+    <script src="/assets/config.js" defer></script><script src="/assets/supabase-client.js" defer></script><script src="/assets/auth-core.js" defer></script><script src="/assets/persistence.js" defer></script><script src="/assets/app.js" defer></script><script src="/assets/cloud.js" defer></script>
+  </body>
+</html>

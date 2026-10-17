@@ -19,7 +19,7 @@ npm run build
 ## ฐานข้อมูล
 
 - โปรเจกต์: `ffgedvyumiyujlfuimrj` (`new_9_gpt`)
-- ติดตั้ง `supabase/migrations/20261017101901_portal_workspaces.sql` แล้วรัน `supabase/seed.sql` (ไม่เขียนทับพื้นที่บัญชีที่มีอยู่)
+- ติดตั้ง `supabase/migrations/20261017102044_portal_workspaces.sql` แล้วรัน `supabase/seed.sql` (ไม่เขียนทับพื้นที่บัญชีที่มีอยู่)
 - `portal_seed` เก็บข้อมูลจำลองตั้งต้นและ catalog รายวิชา 68 รายการ
 - `portal_workspaces` เก็บ snapshot JSONB แยกเจ้าของบัญชีด้วย RLS; ข้อมูลจากการกดยืนยันบันทึกจะไม่หายเมื่อ reload หลังขึ้นสถานะ “บันทึกใน Supabase แล้ว”
 - `portal_save_workspace` ใช้ expected revision เพื่อหยุดการเขียนทับจากอีกหน้าต่าง มีสถานะบันทึก ลองใหม่ และดาวน์โหลดข้อมูลที่ค้าง
@@ -43,3 +43,8 @@ npm run build
 ฐานข้อมูลเป็น snapshot ของ prototype ไม่ใช่ relational schema ของ Person/Organization/File/ExamSession สำหรับ production ต้องแยกตารางธุรกิจ กำหนดสิทธิ์และกติกาฝั่ง server และทดสอบกับเจ้าของงานก่อนใช้จริง
 
 ดู [รายละเอียดการย้าย](docs/HOSTING_MIGRATION.md), [ระบบบัญชี](docs/AUTHENTICATION.md), [ข้อค้างนโยบายเดิม](docs/OPEN_QUESTIONS.md) และเอกสาร Systems 01–09 ใน `docs/` เอกสารเดิมที่กล่าวถึง browser memory เป็นหลักฐานของต้นแบบก่อนย้าย ไม่ใช่สถาปัตยกรรมการบันทึกรุ่นนี้
+
+
+### ข้อยกเว้นไฟล์เผยแพร่
+
+เผยแพร่สำเนาแม่แบบ 5 ไฟล์ที่ผ่านการตรวจและลบชื่อผู้จัดทำแล้ว ส่วนไฟล์นักธรรม 3 ไฟล์คงไว้นอก repository/โฮสต์สาธารณะ หลัง automatic approval review ปฏิเสธไฟล์หนึ่งในกลุ่มนี้เพราะข้อมูลระบุตัวบุคคล/embedded content แม้ลบ metadata บางส่วนแล้ว หน้าดาวน์โหลดเปิดเว็บไซต์ dhammastudy.org ของเจ้าของแบบแทน จึงไม่มีลิงก์ไฟล์ที่หายไป.

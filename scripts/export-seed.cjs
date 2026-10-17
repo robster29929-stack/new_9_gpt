@@ -1,0 +1,11 @@
+const fs = require('node:fs');
+const vm = require('node:vm');
+const source = fs.readFileSync('dist/assets/app.js', 'utf8');
+const document = { getElementById() { return {}; }, addEventListener() {} };
+const window = {};
+const ending = '  render();\n})();';
+if (!source.includes(ending)) throw new Error('Cannot locate bootstrap');
+vm.runInNewContext(source.replace(ending, '  window.seed = portalSnapshot();\n})();'), { window, document, Intl, console });
+fs.writeFileSync('supabase/seed_snapshot.json', JSON.stringify(window.seed, null, 2) + '\n');
+fs.writeFileSync('supabase/seed.sql', "-- Synthetic fixtures only. Rerunnable; does not overwrite existing user workspaces.\ninsert into public.portal_seed(id,snapshot,source_commit) values ('TEST_SEED_001',$portal_seed$" + JSON.stringify(window.seed) + "$portal_seed$::jsonb,'aa8703f34cdf2118cec818383dc8fa6a7325f71f') on conflict (id) do nothing;\n");
+console.log('Exported all source fixture collections:', Object.fromEntries(Object.entries(window.seed.moduleRows).map(([key, rows]) => [key, rows.length])));
