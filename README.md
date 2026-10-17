@@ -48,3 +48,9 @@ npm run build
 ### ข้อยกเว้นไฟล์เผยแพร่
 
 เผยแพร่สำเนาแม่แบบ 5 ไฟล์ที่ผ่านการตรวจและลบชื่อผู้จัดทำแล้ว ส่วนไฟล์นักธรรม 3 ไฟล์คงไว้นอก repository/โฮสต์สาธารณะ หลัง automatic approval review ปฏิเสธไฟล์หนึ่งในกลุ่มนี้เพราะข้อมูลระบุตัวบุคคล/embedded content แม้ลบ metadata บางส่วนแล้ว หน้าดาวน์โหลดเปิดเว็บไซต์ dhammastudy.org ของเจ้าของแบบแทน จึงไม่มีลิงก์ไฟล์ที่หายไป.
+
+## Stack เป้าหมายใหม่ — งานเตรียม
+
+ข้อกำหนดล่าสุดอยู่ใน [AGENTS.md](AGENTS.md) และ [ผลตรวจเทียบ Stack/กฎ](docs/STACK_COMPLIANCE_AUDIT.md) branch foundation เพิ่มเฉพาะส่วนกลางที่ไม่เดา schema; ยังไม่ใช่ Next.js migration ที่เสร็จครบ ระบบ static เดิมยังอยู่จน canonical design และ dev target ชัดเจน
+
+ตรวจส่วนใหม่ด้วย `npm run typecheck`, `npm run test:core`, `npm run test:e2e` และตรวจระบบเดิมด้วย `npm run test:legacy` E2E ทำงานกับ local read-only test server และ block Supabase requests ไม่ส่งอีเมลหรือแตะ project ปัจจุบัน
