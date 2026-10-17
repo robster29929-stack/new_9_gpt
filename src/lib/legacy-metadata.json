@@ -1,0 +1,587 @@
+{
+  "imports": {
+    "people": {
+      "label": "ทะเบียนบุคคล",
+      "optionalFields": [
+        "governancePosition",
+        "educationPositions"
+      ],
+      "previewFields": [
+        "id",
+        "name",
+        "governancePosition",
+        "educationPositions",
+        "section",
+        "office",
+        "province",
+        "sanghaRegion",
+        "status"
+      ],
+      "fields": [
+        [
+          "รหัสระเบียน",
+          "id"
+        ],
+        [
+          "ชื่อบุคคล",
+          "name"
+        ],
+        [
+          "ประเภทบุคคล",
+          "type"
+        ],
+        [
+          "ตำแหน่งทางการปกครอง",
+          "governancePosition"
+        ],
+        [
+          "ตำแหน่ง จศป. ฝ่ายการศึกษา (หลายตำแหน่งคั่นด้วย |)",
+          "educationPositions"
+        ],
+        [
+          "แท่ง/แผนก",
+          "section"
+        ],
+        [
+          "หน่วยงาน",
+          "office"
+        ],
+        [
+          "สังกัดวัด",
+          "temple"
+        ],
+        [
+          "ตำบล",
+          "subdistrict"
+        ],
+        [
+          "อำเภอ",
+          "district"
+        ],
+        [
+          "จังหวัด",
+          "province"
+        ],
+        [
+          "ภาค",
+          "sanghaRegion"
+        ],
+        [
+          "เขตหน/พื้นที่",
+          "region"
+        ],
+        [
+          "สถานะจำลอง",
+          "status"
+        ]
+      ]
+    },
+    "organizations": {
+      "label": "หน่วยงานและสนามสอบ",
+      "optionalFields": [
+        "examType",
+        "examSessionId",
+        "examSessionLabel",
+        "chairName",
+        "chairTitle",
+        "chairAddress",
+        "chairPhone",
+        "chairEmail",
+        "chairLineId",
+        "receiverName",
+        "receiverTitle",
+        "receiverAddress",
+        "receiverPhone",
+        "receiverEmail",
+        "receiverLineId"
+      ],
+      "previewFields": [
+        "id",
+        "name",
+        "type",
+        "address",
+        "province",
+        "examType",
+        "examSessionId",
+        "chairName",
+        "chairTitle",
+        "chairAddress",
+        "chairPhone",
+        "chairEmail",
+        "chairLineId",
+        "receiverName",
+        "receiverTitle",
+        "receiverAddress",
+        "receiverPhone",
+        "receiverEmail",
+        "receiverLineId",
+        "status"
+      ],
+      "fields": [
+        [
+          "รหัสระเบียน",
+          "id"
+        ],
+        [
+          "ชื่อหน่วยงาน/สนามสอบ",
+          "name"
+        ],
+        [
+          "ประเภทหน่วยงาน",
+          "type"
+        ],
+        [
+          "พื้นที่/สังกัด",
+          "unit"
+        ],
+        [
+          "ที่อยู่",
+          "address"
+        ],
+        [
+          "ตำบล",
+          "subdistrict"
+        ],
+        [
+          "อำเภอ",
+          "district"
+        ],
+        [
+          "จังหวัด",
+          "province"
+        ],
+        [
+          "รหัสไปรษณีย์",
+          "postalCode"
+        ],
+        [
+          "ประเภทสอบ",
+          "examType"
+        ],
+        [
+          "รหัสรอบสอบ",
+          "examSessionId"
+        ],
+        [
+          "ชื่อรอบสอบ",
+          "examSessionLabel"
+        ],
+        [
+          "ชื่อประธานสนามสอบ",
+          "chairName"
+        ],
+        [
+          "ตำแหน่งประธานสนามสอบ",
+          "chairTitle"
+        ],
+        [
+          "ที่อยู่ประธานสนามสอบ",
+          "chairAddress"
+        ],
+        [
+          "โทรศัพท์ประธานสนามสอบ",
+          "chairPhone"
+        ],
+        [
+          "อีเมลประธานสนามสอบ",
+          "chairEmail"
+        ],
+        [
+          "LINE ID ประธานสนามสอบ",
+          "chairLineId"
+        ],
+        [
+          "ชื่อผู้รับข้อสอบ",
+          "receiverName"
+        ],
+        [
+          "ตำแหน่งผู้รับข้อสอบ",
+          "receiverTitle"
+        ],
+        [
+          "ที่อยู่ผู้รับข้อสอบ",
+          "receiverAddress"
+        ],
+        [
+          "โทรศัพท์ผู้รับข้อสอบ",
+          "receiverPhone"
+        ],
+        [
+          "อีเมลผู้รับข้อสอบ",
+          "receiverEmail"
+        ],
+        [
+          "LINE ID ผู้รับข้อสอบ",
+          "receiverLineId"
+        ],
+        [
+          "สถานะจำลอง",
+          "status"
+        ]
+      ]
+    },
+    "pali": {
+      "label": "คลังเรียนและข้อสอบ",
+      "fields": [
+        [
+          "รหัสชุด",
+          "id"
+        ],
+        [
+          "ประเภทหลักสูตร",
+          "domain"
+        ],
+        [
+          "สายหลักสูตร",
+          "track"
+        ],
+        [
+          "ชั้น/ระดับ",
+          "level"
+        ],
+        [
+          "วิชา",
+          "subject"
+        ],
+        [
+          "บทเรียน",
+          "lessons"
+        ],
+        [
+          "คลังข้อสอบ",
+          "questionBank"
+        ],
+        [
+          "rubric",
+          "rubric"
+        ]
+      ]
+    },
+    "requests": {
+      "label": "คำขอและสถานะ",
+      "optionalFields": [
+        "summary"
+      ],
+      "previewFields": [
+        "id",
+        "type",
+        "category",
+        "target",
+        "unit",
+        "province",
+        "status",
+        "currentStep"
+      ],
+      "fields": [
+        [
+          "รหัสระเบียน",
+          "id"
+        ],
+        [
+          "รายการคำขอ",
+          "name"
+        ],
+        [
+          "ประเภทคำขอ",
+          "type"
+        ],
+        [
+          "หมวดคำขอ",
+          "category"
+        ],
+        [
+          "สำนัก/สนามสอบ",
+          "target"
+        ],
+        [
+          "หน่วยงานผู้ยื่น",
+          "unit"
+        ],
+        [
+          "จังหวัด",
+          "province"
+        ],
+        [
+          "สถานะจำลอง",
+          "status"
+        ],
+        [
+          "ขั้นตอนจำลอง",
+          "currentStep"
+        ],
+        [
+          "รหัสหน่วยงานเชื่อม",
+          "relatedOrgId"
+        ],
+        [
+          "รายละเอียด TEST_",
+          "summary"
+        ],
+        [
+          "เอกสารแนบ TEST_",
+          "attachmentSummary"
+        ]
+      ]
+    },
+    "admissions": {
+      "label": "ทะเบียนสมัครบาลี/บาลีศึกษา",
+      "fields": [
+        [
+          "รหัสระเบียน",
+          "id"
+        ],
+        [
+          "ผู้สมัครจำลอง",
+          "name"
+        ],
+        [
+          "ประเภทผู้สมัคร",
+          "applicantKind"
+        ],
+        [
+          "สายสอบ",
+          "paliTrack"
+        ],
+        [
+          "ชั้น/ประโยค",
+          "level"
+        ],
+        [
+          "ประเภทบัญชี",
+          "formType"
+        ],
+        [
+          "สำนักเรียน",
+          "unit"
+        ],
+        [
+          "รหัสรอบสอบ",
+          "examSessionId"
+        ],
+        [
+          "สถานะจำลอง",
+          "status"
+        ]
+      ]
+    },
+    "budget": {
+      "label": "งบประมาณ",
+      "numeric": [
+        "allocatedSatang",
+        "committedSatang",
+        "paidSatang"
+      ],
+      "fields": [
+        [
+          "รหัสระเบียน",
+          "id"
+        ],
+        [
+          "ชื่อแผน",
+          "name"
+        ],
+        [
+          "หน่วยงาน",
+          "type"
+        ],
+        [
+          "จัดสรร (สตางค์)",
+          "allocatedSatang"
+        ],
+        [
+          "ผูกพัน (สตางค์)",
+          "committedSatang"
+        ],
+        [
+          "จ่ายจริง (สตางค์)",
+          "paidSatang"
+        ]
+      ]
+    },
+    "assets": {
+      "label": "ทะเบียนพัสดุและครุภัณฑ์",
+      "fields": [
+        [
+          "รหัสระเบียน",
+          "id"
+        ],
+        [
+          "รายการ",
+          "name"
+        ],
+        [
+          "ประเภท",
+          "type"
+        ],
+        [
+          "คลัง/หน่วยงานเริ่มต้น",
+          "unit"
+        ],
+        [
+          "สถานะจำลอง",
+          "status"
+        ]
+      ]
+    },
+    "correspondence": {
+      "label": "สารบรรณออนไลน์ · metadata TEST_ เท่านั้น",
+      "previewFields": [
+        "id",
+        "name",
+        "type",
+        "classification",
+        "senderOrganizationId",
+        "recipientOrganizationId",
+        "status"
+      ],
+      "fields": [
+        [
+          "รหัสเอกสาร TEST_",
+          "id"
+        ],
+        [
+          "เรื่อง TEST_",
+          "name"
+        ],
+        [
+          "ประเภทเอกสาร TEST_",
+          "type"
+        ],
+        [
+          "ชั้นข้อมูล TEST_",
+          "classification"
+        ],
+        [
+          "หน่วยงานต้นทาง ID TEST_",
+          "senderOrganizationId"
+        ],
+        [
+          "หน่วยงานปลายทาง ID TEST_",
+          "recipientOrganizationId"
+        ],
+        [
+          "สถานะ TEST_",
+          "status"
+        ]
+      ]
+    }
+  },
+  "downloads": {
+    "pali": [
+      {
+        "label": "บาลี · ศ.2 ส่วนกลาง",
+        "detail": "แบบใหม่ · 1 ชีต · ศ.2_So_2_ส่วนกลาง · 32 × 26",
+        "asset": "ฟอร์มบัญชี_ศ_2_ส่วนกลาง(แบบใหม่).xlsx",
+        "downloadName": "ฟอร์มบัญชี ศ.2 ส่วนกลาง (แบบใหม่).xlsx"
+      },
+      {
+        "label": "บาลี · ศ.2 และ ศ.3 ส่วนภูมิภาค",
+        "detail": "แบบใหม่ · 2 ชีต · ศ.2 32 × 26 และ ศ.3 55 × 22",
+        "asset": "ฟอร์มบัญชี_ศ_2_3_ส่วนภูมิภาค(แบบใหม่).xlsx",
+        "downloadName": "ฟอร์มบัญชี ศ.2-3 ส่วนภูมิภาค (แบบใหม่).xlsx"
+      }
+    ],
+    "dhamma": [
+      {
+        "label": "นักธรรมชั้นตรี · ศ.1",
+        "detail": "บรรพชิต · ปี 2568-v3 · .xls",
+        "sourceOnly": true,
+        "asset": "สำหรับพระภิกษุ-สามเณร-ศ.๑-นักธรรมชั้นตรี_2568-v3.xls",
+        "downloadName": "สำหรับพระภิกษุ-สามเณร-ศ.๑-นักธรรมชั้นตรี_2568-v3.xls"
+      },
+      {
+        "label": "นักธรรมชั้นโท · ศ.2",
+        "detail": "บรรพชิต · ปี 2568-v3 · .xls",
+        "sourceOnly": true,
+        "asset": "สำหรับพระภิกษุ-สามเณร-ศ.๒-นักธรรมชั้นโท_2568-v3.xls",
+        "downloadName": "สำหรับพระภิกษุ-สามเณร-ศ.๒-นักธรรมชั้นโท_2568-v3.xls"
+      },
+      {
+        "label": "นักธรรมชั้นเอก · ศ.2",
+        "detail": "บรรพชิต · ปี 2568-v3 · .xls",
+        "sourceOnly": true,
+        "asset": "สำหรับพระภิกษุ-สามเณร-ศ.๒-นักธรรมชั้นเอก_2568-v3.xls",
+        "downloadName": "สำหรับพระภิกษุ-สามเณร-ศ.๒-นักธรรมชั้นเอก_2568-v3.xls"
+      },
+      {
+        "label": "ธรรมศึกษาชั้นตรี · ศ.5",
+        "detail": "นักเรียน/นักศึกษา/ฆราวาส · ปี 2568-v3 · .xls",
+        "asset": "สำหรับนักเรียน-นักศึกษา-ฆราวาส-ศ.๕-ธรรมศึกษาชั้นตรี_2568-v3.xls",
+        "downloadName": "สำหรับนักเรียน-นักศึกษา-ฆราวาส-ศ.๕-ธรรมศึกษาชั้นตรี_2568-v3.xls"
+      },
+      {
+        "label": "ธรรมศึกษาชั้นโท · ศ.6",
+        "detail": "นักเรียน/นักศึกษา/ฆราวาส · ปี 2568-v3 · .xls",
+        "asset": "สำหรับนักเรียน-นักศึกษา-ฆราวาส-ศ.๖-ธรรมศึกษาชั้นโท_2568-v3.xls",
+        "downloadName": "สำหรับนักเรียน-นักศึกษา-ฆราวาส-ศ.๖-ธรรมศึกษาชั้นโท_2568-v3.xls"
+      },
+      {
+        "label": "ธรรมศึกษาชั้นเอก · ศ.6",
+        "detail": "นักเรียน/นักศึกษา/ฆราวาส · ปี 2568-v3 · .xls",
+        "asset": "สำหรับนักเรียน-นักศึกษา-ฆราวาส-ศ.๖-ธรรมศึกษาชั้นเอก_2568-v3.xls",
+        "downloadName": "สำหรับนักเรียน-นักศึกษา-ฆราวาส-ศ.๖-ธรรมศึกษาชั้นเอก_2568-v3.xls"
+      }
+    ]
+  },
+  "governance": [
+    "TEST_เลขานุการเจ้าคณะตำบล",
+    "TEST_เจ้าคณะตำบล",
+    "TEST_เลขานุการเจ้าคณะอำเภอ",
+    "TEST_เจ้าคณะอำเภอ",
+    "TEST_เลขานุการรองเจ้าคณะจังหวัด",
+    "TEST_รองเจ้าคณะจังหวัด",
+    "TEST_เลขานุการเจ้าคณะจังหวัด",
+    "TEST_เจ้าคณะจังหวัด",
+    "TEST_เลขานุการรองเจ้าคณะภาค",
+    "TEST_รองเจ้าคณะภาค",
+    "TEST_เลขานุการเจ้าคณะภาค",
+    "TEST_เจ้าคณะภาค"
+  ],
+  "education": [
+    "TEST_ครูธรรม",
+    "TEST_ครูบาลี",
+    "TEST_พระปริยัตินิเทศก์",
+    "TEST_ผู้อำนวยการโรงเรียนปริยัติสามัญ",
+    "TEST_เลขานุการเจ้าสำนักเรียน",
+    "TEST_รองอาจารย์ใหญ่สำนักเรียน",
+    "TEST_อาจารย์ใหญ่สำนักเรียน",
+    "TEST_เจ้าสำนักเรียน",
+    "TEST_เลขานุการเจ้าสำนักศาสนศึกษา",
+    "TEST_รองอาจารย์ใหญ่สำนักศาสนศึกษา",
+    "TEST_อาจารย์ใหญ่สำนักศาสนศึกษา",
+    "TEST_เจ้าสำนักศาสนศึกษา"
+  ],
+  "organizationTypes": [
+    "TEST_สำนักเรียน",
+    "TEST_สำนักศาสนศึกษา",
+    "TEST_สำนักเรียนบาลีประจำจังหวัด",
+    "TEST_วัด",
+    "TEST_องค์กร",
+    "TEST_สถานศึกษา",
+    "TEST_สนามสอบบาลี",
+    "TEST_สนามสอบนักธรรมชั้นตรี",
+    "TEST_สนามสอบนักธรรมชั้นโท-เอก",
+    "TEST_สนามสอบธรรมศึกษา"
+  ],
+  "examTypes": [
+    "TEST_บาลี",
+    "TEST_นักธรรมชั้นตรี",
+    "TEST_นักธรรมชั้นโท-เอก",
+    "TEST_ธรรมศึกษา"
+  ],
+  "requestTypes": [
+    "TEST_จัดตั้งสำนักเรียน",
+    "TEST_จัดตั้งสำนักศาสนศึกษา",
+    "TEST_ยุบสำนักเรียน",
+    "TEST_ยุบสำนักศาสนศึกษา",
+    "TEST_เปิดสนามสอบนักธรรมชั้นตรี",
+    "TEST_เปิดสนามสอบนักธรรมชั้นโท-เอก",
+    "TEST_เปิดสนามสอบธรรมศึกษา",
+    "TEST_ปิดสนามสอบนักธรรมชั้นตรี",
+    "TEST_ปิดสนามสอบนักธรรมชั้นโท-เอก",
+    "TEST_ปิดสนามสอบธรรมศึกษา",
+    "TEST_ย้ายสนามสอบนักธรรมชั้นตรี",
+    "TEST_ย้ายสนามสอบนักธรรมชั้นโท-เอก",
+    "TEST_ย้ายสนามสอบธรรมศึกษา"
+  ]
+}

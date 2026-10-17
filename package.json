@@ -1,13 +1,41 @@
 {
   "name": "new-9-gpt",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "type": "commonjs",
   "scripts": {
-    "build": "node scripts/build.cjs",
-    "test": "node tests/smoke.cjs && node --test tests/persistence.test.cjs tests/auth.test.cjs"
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:legacy": "node tests/smoke.cjs && node --test tests/persistence.test.cjs tests/auth.test.cjs",
+    "check": "npm run typecheck && npm test && npm run build",
+    "start": "next start"
   },
-  "dependencies": { "@supabase/supabase-js": "2.118.0" },
-  "devDependencies": { "esbuild": "0.28.2", "supabase": "2.121.0" },
-  "engines": { "node": ">=22" }
+  "dependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@tanstack/react-table": "8.21.3",
+    "exceljs": "4.4.0",
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-hook-form": "7.90.0",
+    "recharts": "3.10.1",
+    "tailwindcss": "4.3.3",
+    "zod": "4.6.7",
+    "@supabase/supabase-js": "2.118.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5",
+    "esbuild": "0.28.2",
+    "supabase": "2.121.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
 }

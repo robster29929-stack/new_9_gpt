@@ -1,50 +1,54 @@
-# สังฆะพอร์ทัล · new_9_gpt
+# พื้นที่ทำงาน 9 ระบบ — Next.js
 
-ย้ายต้นแบบ 9 ระบบจาก Sites version 24 (source `aa8703f34cdf2118cec818383dc8fa6a7325f71f`) มายัง GitHub / Supabase / Vercel โดยคงหน้าจอ ตัวอักษรใหญ่ แม่แบบ Excel 8 ไฟล์ และ workflow `TEST_` เดิม
+เว็บหลักใช้ **Next.js App Router 16.4.2, React 19.3.1, TypeScript strict และ Tailwind CSS 4.3.3** แล้ว ไม่มีการโหลด `dist/assets/app.js` หรือฝังหน้าเก่าผ่าน iframe ในเส้นทางใหม่
 
-## ติดตั้ง
+## เริ่มต้น
 
-ใช้ Node.js 22 ขึ้นไป:
+ใช้ Node.js 22 ขึ้นไปและ npm:
 
 ```sh
 npm ci
+npm run typecheck
 npm test
 npm run build
+npm start
 ```
 
-เผยแพร่โฟลเดอร์ `dist` ด้วย Vercel ตาม `vercel.json` โครงการเชื่อม repository แล้วให้ deploy branch `main`
+สำหรับพัฒนา: `npm run dev` หลังตรวจการตั้งค่าสภาพแวดล้อมแล้ว
 
-`config/supabase.public.json` มีเฉพาะ URL กับ **publishable key** ที่ออกแบบให้ใช้ใน browser; ไม่มี secret/service-role key, รหัสผ่านหรือ access token ใน repository สามารถ override ด้วย `SUPABASE_URL` และ `SUPABASE_PUBLISHABLE_KEY` ใน Vercel
+- `/login`, `/signup`, `/forgot-password`, `/reset-password`: หน้าบัญชี React
+- `/workspace`: ภาพรวม
+- `/workspace/people`, `organizations`, `learning`, `requests`, `admissions`, `budget`, `assets`, `correspondence`, `exam-import`: ระบบ 01–09
+- `/workspace/access-control`, `data-tools`, `activity`: สิทธิ์จำลอง, Excel และประวัติ TEST_
+- ลิงก์เก่า `/login.html`, `/signup.html`, `/forgot-password.html`, `/reset-password.html`, `/workspace.html` เปลี่ยนเส้นทางไปหน้าใหม่ เพื่อให้ลิงก์เดิมและ callback ในอีเมลยังใช้ต่อได้
 
-## ฐานข้อมูล
+## บัญชีและข้อมูลเดิม
 
-- โปรเจกต์: `ffgedvyumiyujlfuimrj` (`new_9_gpt`)
-- ติดตั้ง `supabase/migrations/20261017102044_portal_workspaces.sql` แล้วรัน `supabase/seed.sql` (ไม่เขียนทับพื้นที่บัญชีที่มีอยู่)
-- `portal_seed` เก็บข้อมูลจำลองตั้งต้นและ catalog รายวิชา 68 รายการ
-- `portal_workspaces` เก็บ snapshot JSONB แยกเจ้าของบัญชีด้วย RLS; ข้อมูลจากการกดยืนยันบันทึกจะไม่หายเมื่อ reload หลังขึ้นสถานะ “บันทึกใน Supabase แล้ว”
-- `portal_save_workspace` ใช้ expected revision เพื่อหยุดการเขียนทับจากอีกหน้าต่าง มีสถานะบันทึก ลองใหม่ และดาวน์โหลดข้อมูลที่ค้าง
-- ไม่มีฐานข้อมูลเดิมให้ dump: ต้นทางเป็น static prototype ที่มี fixture ใน source เท่านั้น ข้อมูลที่กรอกค้างใน browser ของผู้ใช้ก่อนย้ายไม่สามารถดึงกลับจาก source ได้
+ใช้ `@supabase/supabase-js` **2.118.0** กับ Supabase Auth และฐานข้อมูลเดิม `ffgedvyumiyujlfuimrj` โดยใช้ `portal_workspaces`, `portal_seed` และ RPC `portal_save_workspace` เดิม สัญญา snapshot ยังเป็น schemaVersion 1; ฟิลด์ที่ไม่ได้แก้ไขและฟิลด์เพิ่มเติมยังถูกเก็บไว้ การบันทึกใช้ expected revision ป้องกันการเขียนทับจากหลายหน้าต่าง
 
-## บัญชีและอีเมล — ต้องตั้งค่า URL ก่อนใช้อีเมล
+**การย้ายหน้าเว็บไม่เปลี่ยน schema, migration, RLS หรือบัญชีผู้ใช้ และไม่ได้ใช้ Supabase connector กับโปรเจกต์ที่ยังไม่ยืนยันว่าเป็น dev**
 
-เข้าสู่ระบบด้วย Supabase email/password; มีสมัครบัญชีทดสอบ, ออกจากระบบ, ลืมรหัสผ่านและตั้งรหัสผ่านใหม่ บัญชีนี้แยกจาก ChatGPT
+ตั้งค่า public configuration ด้วย `NEXT_PUBLIC_SUPABASE_URL` และ `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` หรือใช้ public config เดิมใน `config/supabase.public.json` ตัวแปร `NEXT_PUBLIC_` ถูกส่งเข้า browser จึงใช้ได้เฉพาะ URL/publishable key เท่านั้น ห้ามใส่ secret/service-role key
 
-หลังได้ URL production ให้ตั้ง Supabase → Authentication → URL Configuration:
+ระบบใช้ storage key ของ Supabase เดิม บัญชีที่เข้าสู่ระบบบน origin เดิมจึงอ่าน session และพื้นที่เดิมต่อได้ หน้าสมัครไม่สร้าง admin อัตโนมัติ การส่งอีเมลยังต้องใช้ Auth URL/SMTP ที่ตั้งค่าถูกต้อง ไม่มีการสร้างบัญชีหรือส่งอีเมลจริงระหว่างทดสอบการย้าย
 
-- **Site URL:** URL production ของเว็บไซต์นี้
-- **Redirect URLs:** `https://<production-domain>/login.html` และ `https://<production-domain>/reset-password.html`
+## ขอบเขต TEST_
 
-ตั้ง SMTP ขององค์กรหากต้องส่งอีเมลให้ผู้ใช้ทั่วไป: ตัวส่งเริ่มต้นของ Supabase อาจจำกัดผู้รับและอัตราส่ง ไม่มีการสร้างบัญชีผู้ใช้หรือส่งอีเมลจริงโดยอัตโนมัติระหว่างย้าย ให้เจ้าของสร้างบัญชีจากหน้า “สร้างบัญชีทดสอบ” หลังตั้ง URL/SMTP แล้ว
+ทุกระบบงานยังเป็นต้นแบบ TEST_ เช่นเดิม สิทธิ์งาน การเปลี่ยนสถานะ ผลสอบ ยอดเงิน เอกสาร และการส่งหนังสือยังไม่ใช่การดำเนินงานทางการ ประวัติใหม่เป็นเหตุการณ์ TEST_ ที่บันทึกใน snapshot ของบัญชี ไม่ใช่ตาราง `audit_logs` สำหรับ production
 
-## ขอบเขต
+การใช้งานจริงหลายหน่วยงานยังต้องมี `docs/design.md` หัวข้อ 4 ที่ยืนยันแล้ว, project dev, canonical schema, settings, `can_access()`, audit/RLS และชุดทดสอบสิทธิ์ตามพื้นที่ การย้ายเทคโนโลยีครั้งนี้ไม่ได้รับรองว่าข้อกำหนดเหล่านั้นเสร็จแล้ว
 
-ข้อมูลธุรกิจทุกระบบยังเป็น `TEST_` และ workflow จำลอง; เพิ่มเฉพาะบัญชีจริงกับการบันทึกพื้นที่ทดสอบต่อบัญชี ระบบสิทธิ์งาน 01–09 ยังเป็นตัวอย่างบนหน้าจอ ไม่ใช่ระบบสิทธิ์ส่วนกลางหลายหน่วยงาน ไม่มีการรับเอกสารลับจริง ลงนาม อนุมัติการเงิน ประกาศผลสอบจริง หรือรับใบสมัครจริง
+## ทดสอบ
 
-ฐานข้อมูลเป็น snapshot ของ prototype ไม่ใช่ relational schema ของ Person/Organization/File/ExamSession สำหรับ production ต้องแยกตารางธุรกิจ กำหนดสิทธิ์และกติกาฝั่ง server และทดสอบกับเจ้าของงานก่อนใช้จริง
+```sh
+npm test
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
 
-ดู [รายละเอียดการย้าย](docs/HOSTING_MIGRATION.md), [ระบบบัญชี](docs/AUTHENTICATION.md), [ข้อค้างนโยบายเดิม](docs/OPEN_QUESTIONS.md) และเอกสาร Systems 01–09 ใน `docs/` เอกสารเดิมที่กล่าวถึง browser memory เป็นหลักฐานของต้นแบบก่อนย้าย ไม่ใช่สถาปัตยกรรมการบันทึกรุ่นนี้
+Playwright รันกับ production build ผ่าน `next start` และจำลองเฉพาะ Supabase HTTP API ด้วยข้อมูล TEST_ ไม่เขียนฐานจริง ไม่ส่งอีเมลจริง ผลนี้ตรวจการทำงานของ client และสัญญา API ไม่ได้แทนการทดสอบ RLS หรือ SMTP บนฐานจริง
 
+ฟอนต์ TH Sarabun New ใช้ไฟล์เดิมแบบ self-hosted ผ่าน `next/font/local` พร้อมใบอนุญาตใน `public/assets/fonts/OFL.txt` ปุ่มและแบบฟอร์มสืบทอดฟอนต์เดียวกัน
 
-### ข้อยกเว้นไฟล์เผยแพร่
-
-เผยแพร่สำเนาแม่แบบ 5 ไฟล์ที่ผ่านการตรวจและลบชื่อผู้จัดทำแล้ว ส่วนไฟล์นักธรรม 3 ไฟล์คงไว้นอก repository/โฮสต์สาธารณะ หลัง automatic approval review ปฏิเสธไฟล์หนึ่งในกลุ่มนี้เพราะข้อมูลระบุตัวบุคคล/embedded content แม้ลบ metadata บางส่วนแล้ว หน้าดาวน์โหลดเปิดเว็บไซต์ dhammastudy.org ของเจ้าของแบบแทน จึงไม่มีลิงก์ไฟล์ที่หายไป.
+โค้ด static เดิมใน `dist` ถูกเก็บเป็น reference และ regression fixture; Vercel build เว็บหลักด้วย `next build` และใช้ `.next` ดูรายละเอียดใน [รายงานการย้าย](docs/MIGRATION_NEXT_REACT.md)
