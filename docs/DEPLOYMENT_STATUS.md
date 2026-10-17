@@ -7,17 +7,17 @@
 - ตรวจ anonymous Data API จริง: อ่านทั้ง seed และ workspace ถูกปฏิเสธ; Security advisors ไม่พบข้อเตือน
 - Local build, regression ระบบ 01–09 และ unit tests Auth/persistence 7 กรณีผ่าน; ยังไม่ใช่การทดสอบส่งอีเมล/ล็อกอินจริงครบวงจร
 
-## Vercel — ยังไม่ deploy
+## Vercel — Ready (ยืนยันผ่านหน้าเว็บ)
 
 เป้าหมายล่าสุดจากผู้ใช้: https://vercel.com/kung-robster/new_9_gpt-i9kg
 
-การเชื่อมต่อปัจจุบันเห็นทีม `kung-robster` แต่ไม่แสดงโปรเจกต์; อ่านชื่อที่ระบุได้ 404 Project not found และ create/import project ถูกปฏิเสธ 403 Permission denied จึงไม่มี deployment หรือ URL production ที่ยืนยันได้ในรอบนี้ ไม่ได้เปลี่ยนโปรเจกต์ Vercel อื่น
+หลังผู้ใช้อนุญาตให้ตรวจผ่านหน้าเว็บ ยืนยันว่าโปรเจกต์เชื่อม GitHub `robster29929-stack/new_9_gpt`, branch `main` และ production deployment ของ commit `eac3a9ab9016eba41c1dd554d5fb2924d12d8908` มีสถานะ Ready แล้ว เปิดหน้าเข้าสู่ระบบ production ได้จริงที่ https://new9gpt-i9kg.vercel.app/ . API connector ยังมีข้อจำกัดสิทธิ์ แต่ไม่ได้หมายความว่าเว็บไซต์ไม่ถูกเผยแพร่
 
-เมื่อบัญชี/การเชื่อมต่อได้รับสิทธิ์ ให้เชื่อม repository นี้กับโปรเจกต์ดังกล่าว แล้วตั้ง Framework = Other, Build = `npm run build`, Output = `dist`, Node.js 22 ขึ้นไป และ deploy `main` ไฟล์ vercel.json อยู่ใน repo แล้ว
+โครงการใช้ Git integration: push ไป `main` จะสร้าง production deployment ตาม vercel.json; local build ใช้ `npm run build` และ output `dist`
 
 config/supabase.public.json ใช้ publishable key ที่ปลอดภัยสำหรับ frontend จึง build ได้ทันที ไม่ต้องใส่ service-role key
 
-หลังได้ domain จริง ตั้ง Supabase Auth Site URL/Redirect URLs และ SMTP ตาม README ก่อนทดสอบ signup/recovery email
+โดเมนจริงคือ https://new9gpt-i9kg.vercel.app/ . ยังต้องตั้ง/ตรวจ Supabase Auth Site URL/Redirect URLs และ SMTP ตาม README ก่อนทดสอบ signup/recovery email จริง รอบนี้ตรวจเฉพาะหน้าบัญชีที่เผยแพร่ ไม่ได้สร้างบัญชี ส่งอีเมล หรือเข้าสู่ข้อมูล TEST_ ด้วยบัญชีผู้ใช้
 
 ## ข้อยกเว้นไฟล์แนบ
 
