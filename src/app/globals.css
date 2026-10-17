@@ -1,0 +1,356 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f7f3;
+  --foreground: #213c32;
+  --card: #ffffff;
+  --primary: #194c3d;
+  --primary-foreground: #ffffff;
+  --muted: #edf1e9;
+  --muted-foreground: #5c6b62;
+  --border: #dbe4da;
+  --radius: 1rem;
+}
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --radius-xl: var(--radius);
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    "TH Sarabun New", "Sarabun", "Noto Sans Thai", Tahoma, sans-serif;
+  line-height: 1.7;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+a,
+button,
+input {
+  touch-action: manipulation;
+}
+a {
+  text-underline-offset: 4px;
+}
+button,
+a,
+input {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.55;
+  text-wrap: balance;
+}
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid #b79038;
+  outline-offset: 4px;
+}
+input {
+  min-height: 3rem;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: white;
+  padding: 0.65rem 1rem;
+}
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+th {
+  font-weight: 600;
+  background: var(--muted);
+}
+td,
+th {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -10rem;
+  z-index: 100;
+  background: white;
+  padding: 1rem;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+.sidebar-link {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  line-height: 1.6;
+}
+.sidebar-link:hover,
+.sidebar-link[aria-current="page"] {
+  background: #e5eee3;
+}
+.sidebar-number {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  border: 1px solid #c9d9ca;
+  border-radius: 0.5rem;
+  padding: 0.1rem 0.35rem;
+  min-width: 2rem;
+  text-align: center;
+  color: #6a7d64;
+}
+.data-table {
+  width: 100%;
+  table-layout: fixed;
+}
+.data-table th:first-child {
+  width: 25%;
+}
+.data-table th:nth-child(2) {
+  width: 35%;
+}
+.data-table th:nth-child(3),
+.data-table th:nth-child(4) {
+  width: 20%;
+}
+.mobile-nav summary {
+  cursor: pointer;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: white;
+}
+@media (max-width: 767px) {
+  html {
+    font-size: 17px;
+  }
+  .data-table {
+    table-layout: auto;
+    min-width: 670px;
+  }
+  .table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .data-table th:first-child {
+    width: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-sarabun);
+}
+body {
+  font-family: var(--font-sarabun), sans-serif;
+  font-size: 1.15rem;
+}
+textarea,
+select {
+  font: inherit;
+  min-width: 0;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: white;
+  padding: 0.65rem 1rem;
+}
+textarea {
+  width: 100%;
+  min-height: 7rem;
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+button:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #b79038;
+  outline-offset: 3px;
+}
+.data-table {
+  table-layout: auto;
+  min-width: 650px;
+}
+.data-table th:first-child,
+.data-table th:nth-child(2),
+.data-table th:nth-child(3),
+.data-table th:nth-child(4) {
+  width: auto;
+}
+.table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.data-table td {
+  max-width: 24rem;
+}
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #09271999;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+.dialog-panel {
+  max-height: 90dvh;
+  width: min(960px, 100%);
+  overflow: auto;
+  border-radius: 1rem;
+  background: white;
+  padding: 1.5rem;
+  box-shadow: 0 20px 70px #0004;
+}
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.field-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.field-grid input,
+.field-grid select {
+  width: 100%;
+}
+.badge {
+  display: inline-flex;
+  border-radius: 999px;
+  background: #edf2e9;
+  padding: 0.1rem 0.7rem;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+.table-scroll th button {
+  text-align: left;
+}
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(7rem, 1fr) 2fr;
+  gap: 0.7rem;
+}
+.detail-grid dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.detail-grid dt {
+  font-weight: 700;
+}
+.test-note {
+  border: 1px solid #e0d2a8;
+  background: #fffbef;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  color: #6e5c31;
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.tabs button[aria-selected="true"] {
+  background: var(--primary);
+  color: white;
+}
+.error {
+  color: #a22820;
+}
+.success {
+  color: #14603d;
+}
+@media (max-width: 767px) {
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .dialog-panel {
+    padding: 1rem;
+  }
+  .data-table td {
+    max-width: 18rem;
+  }
+}
+@media print {
+  aside,
+  header,
+  footer,
+  nav,
+  button,
+  .test-note {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+  .table-scroll {
+    overflow: visible;
+  }
+  .dialog-backdrop {
+    position: static;
+    background: white;
+  }
+  .dialog-panel {
+    max-height: none;
+    box-shadow: none;
+    width: 100%;
+  }
+}

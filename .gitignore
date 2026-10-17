@@ -7,3 +7,9 @@ supabase/.temp/
 supabase/.branches/
 dist/assets/supabase-client.js
 dist/assets/config.js
+
+.next/
+out/
+playwright-report/
+test-results/
+*.tsbuildinfo

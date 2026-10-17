@@ -89,3 +89,7 @@
 - การคุ้มครอง: เอกสารจำกัดสิทธิ์ mask เรื่อง/เนื้อหา/ไฟล์ใน list/detail/search/CSV/XLSX; Excel ใช้ metadata allowlist; แบบร่างรับเฉพาะ `TEST_` และชื่อไฟล์ตัวอย่างโดยไม่มี upload
 - หลักฐาน UX: `docs/SYSTEM_08_SOURCE_PROFILE.md`; e-Office/คู่มือผู้ใช้กล่าวถึงร่างและแนบเอกสาร ส่งตรวจ เสนอลงนาม รับ-ส่ง/สถานะ และรายงานรับ-ส่ง/Excel
 - ข้อจำกัด: ไม่มี server/backend, authentication, RLS, Storage, e-mail/LINE/dConnect, delivery receipt, เลขทะเบียนจริง, ลายเซ็น, approval หรือเอกสารจริง; ทุก policy ตาม OQ-08-01…09 ยัง `TO VERIFY`
+
+## ADR — ย้าย runtime เป็น Next.js / React ตามคำขอ 17 ตุลาคม 2569
+
+ผู้ใช้ยืนยันให้ย้ายจาก HTML/CSS/JavaScript static เป็น Next.js, TypeScript, React และ Tailwind/shadcn. ใช้ Tailwind กับ native primitives ที่ดัดแปลงจาก shadcn โดยไม่เพิ่ม dependency นอก Stack. คง Supabase JS 2.118.0, tables/RPC/RLS และ snapshot v1 เดิมสำหรับ TEST_ และไม่ทำ schema migration. Build หลักเปลี่ยนจาก esbuild/dist เป็น next build/.next; dist เดิมคงไว้เป็น reference. ใช้ nonce CSP ต่อ response และ dynamic rendering เพื่อไม่เปิด arbitrary inline scripts. การย้าย frontend นี้ไม่ถือว่าอนุมัติ schema หรือสิทธิ์ production ใหม่.
