@@ -201,3 +201,13 @@ body[data-cloud-required]:not([data-cloud-ready]) #scroll-top { display: none; }
 #cloud-status[data-state="conflict"], #cloud-status[data-state="error"] { color: #a23636; }
 #cloud-status[data-state="saved"] { color: #336442; }
 @media (max-width: 650px) { .cloud-toolbar { padding: 12px 16px; } }
+
+
+/* TH Sarabun New web font (Sarabun project; see assets/fonts/OFL.txt). */
+@font-face { font-family: "TH Sarabun New"; src: url("/assets/fonts/Sarabun-Regular.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "TH Sarabun New"; src: url("/assets/fonts/Sarabun-Medium.ttf") format("truetype"); font-style: normal; font-weight: 500; font-display: swap; }
+@font-face { font-family: "TH Sarabun New"; src: url("/assets/fonts/Sarabun-SemiBold.ttf") format("truetype"); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: "TH Sarabun New"; src: url("/assets/fonts/Sarabun-Bold.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: swap; }
+@font-face { font-family: "TH Sarabun New"; src: url("/assets/fonts/Sarabun-Italic.ttf") format("truetype"); font-style: italic; font-weight: 400; font-display: swap; }
+@font-face { font-family: "TH Sarabun New"; src: url("/assets/fonts/Sarabun-BoldItalic.ttf") format("truetype"); font-style: italic; font-weight: 700; font-display: swap; }
+html, body, body * { font-family: "TH Sarabun New", sans-serif !important; }
